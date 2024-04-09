@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* header */
+
+header {
+    background-color: #528265;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 50px;
+}
+
+header img {
+    width: 20%;
+    height: auto;
+    padding: 0.4%;
+}
+
+header nav {
+    float: right;
+    width: 600px;
+    margin-top: 2.5%;
+}
+
+header nav ul li {
+    float: left;
+    display: inline-block;
+    padding-right: 5%;
+}
+
+header nav ul li a
+{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    line-height: 52px;
+    vertical-align: middle;
+}
+
+/* body */
+
+.colis_encours {
+    margin-top: 3%;
+}
+
+.colis_encours h1 {
+    margin-left: 5%;
+    text-decoration: underline;
+}
+
+.colis_encours .info {
+    background-color: #528265;
+    width: 25%;
+    height: auto;
+    margin-top: 3%;
+    margin-left: 35%;
+    padding: 1%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 50px;
+    color: white;
+}
+
+.colis_encours .info h2 {
+    text-decoration: underline;
+}
+
+.colis_encours .info p {
+    text-align: center;
+    padding: 0.5%;
+}
+
+.colis_livrés {
+    margin-top: 3%;
+}
+
+.colis_livrés h1 {
+    margin-left: 5%;
+    text-decoration: underline;
+}
+
+.colis_livrés .info {
+    background-color: #528265;
+    width: 25%;
+    height: auto;
+    margin-top: 3%;
+    margin-left: 35%;
+    padding: 1%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 50px;
+    color: white;
+}
+
+.colis_livrés .info h2 {
+    text-decoration: underline;
+}
+
+.colis_livrés .info p {
+    text-align: center;
+    padding: 0.5%;
+}
+
+/* footer */
