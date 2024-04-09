@@ -30,6 +30,6 @@ func main() {
 	http.HandleFunc("/retour", controller.RetourHandler)
 	http.HandleFunc("/login", controller.LoginHandler)
 
-	panic(http.ListenAndServe("localhost:8080", nil))
+	panic(http.ListenAndServe(":8080", nil))
 
 }

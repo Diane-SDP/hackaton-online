@@ -19,7 +19,7 @@ func ColisHandler(w http.ResponseWriter, r *http.Request) {
 			panic(err)
 		}
 	} else {
-		http.Redirect(w, r, "/notfound", http.StatusNotFound)
+		NotFound(w, r, http.StatusNotFound)
 	}
 
 }

@@ -1,3 +1,5 @@
+/* ---- GENERAL ---- */
+
 *{
     margin: 0;
 }
@@ -6,45 +8,61 @@ a {
     text-decoration: none;
 }
 
-/* header */
+body {
+    background-image: url(https://themewagon.github.io/courier/v1.0.0/assets/img/illustrations/hero.png);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+/* ---- HEADER ---- */
 
 header {
     background-color: #528265;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 50px;
 }
 
-header img {
-    width: 20%;
-    height: auto;
-    padding: 0.4%;
-}
-
-header nav {
-    float: right;
-    width: 600px;
-    margin-top: 2.5%;
-}
-
-header nav ul li {
-    float: left;
-    display: inline-block;
-    padding-right: 5%;
-}
-
-header nav ul li a
-{
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: bold;
+header h1 {
     color: white;
     line-height: 52px;
     vertical-align: middle;
 }
 
-/* body */
+.container-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.index-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    padding: 0 100px;
+}
+
+.index-header .header-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.index-header .header-buttons {
+    margin-right: 10px;
+}
+
+.index-header h1 {
+    display: flex;
+    color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0px 25px;
+}
+
+/* ---- BODY ---- */
 
 .colis_encours {
     margin-top: 3%;
+    font-family: Arial, sans-serif;
 }
 
 .colis_encours h1 {
@@ -54,11 +72,13 @@ header nav ul li a
 
 .colis_encours .info {
     background-color: #528265;
+    align-items: left;
     width: 25%;
     height: auto;
     margin-top: 3%;
     margin-left: 35%;
     padding: 1%;
+    border: 2px solid rgba(0, 0, 0, 0.35);
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 50px;
     color: white;
@@ -66,6 +86,7 @@ header nav ul li a
 
 .colis_encours .info h2 {
     text-decoration: underline;
+    padding-bottom: 10px;
 }
 
 .colis_encours .info p {
@@ -73,8 +94,20 @@ header nav ul li a
     padding: 0.5%;
 }
 
+.infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.colis_encours .infos-color {
+    color : blue;
+}
+
 .colis_livrés {
     margin-top: 3%;
+    font-family: Arial, sans-serif;
 }
 
 .colis_livrés h1 {
@@ -89,6 +122,7 @@ header nav ul li a
     margin-top: 3%;
     margin-left: 35%;
     padding: 1%;
+    border: 2px solid rgba(0, 0, 0, 0.35);
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 50px;
     color: white;
@@ -96,6 +130,7 @@ header nav ul li a
 
 .colis_livrés .info h2 {
     text-decoration: underline;
+    padding-bottom: 10px;
 }
 
 .colis_livrés .info p {

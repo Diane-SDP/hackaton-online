@@ -21,12 +21,40 @@ func AddColis(code string, idshop int, startaddr string, finaladdr string) {
 	}
 }
 
-func Exist(code string) bool {
-	rows, err := DB.Query("SELECT Uid FROM colis WHERE Uid = ?", code)
+func GetAllColis() []Colis {
+	rows, err := DB.Query("SELECT id, uid, StartAdress, FinalAdress, step, idShop FROM Colis")
 	if err != nil {
 		panic(err)
 	}
 	defer rows.Close()
+	var AllColis []Colis
+	for rows.Next() {
+		println("pute")
+		var id int
+		var uid string
+		var StartAdress string
+		var FinalAdress string
+		var step int
+		var IdEntreprise int
+		var TheColis Colis
+		err = rows.Scan(&id, &uid, &StartAdress, &FinalAdress, &step, &IdEntreprise)
+		TheColis.Id = id
+		TheColis.Uid = uid
+		TheColis.StartAdress = StartAdress
+		TheColis.FinalAdress = FinalAdress
+		TheColis.Step = step
+		TheColis.IdShop = IdEntreprise
+		AllColis = append(AllColis, TheColis)
+	}
+	return AllColis
+}
+func Exist(code string) bool {
+	rows, err := DB.Query("SELECT Uid FROM Colis WHERE Uid = ?", code)
+	if err != nil {
+		panic(err)
+	}
+	defer rows.Close()
+
 	var uid string
 	for rows.Next() {
 		err := rows.Scan(&uid)
@@ -39,7 +67,7 @@ func Exist(code string) bool {
 }
 
 func GetColis(code string) Colis {
-	rows, err := DB.Query("SELECT Id, IdShop, StartAdress, FinalAdress, Step FROM colis WHERE Uid = ?", code)
+	rows, err := DB.Query("SELECT Id, IdShop, StartAdress, FinalAdress, Step FROM Colis WHERE Uid = ?", code)
 	if err != nil {
 		panic(err)
 	}
@@ -52,5 +80,22 @@ func GetColis(code string) Colis {
 		}
 	}
 	colis.Uid = code
+	return colis
+}
+
+func GetColisbyid(id int) Colis {
+	rows, err := DB.Query("SELECT Id, IdShop, StartAdress, FinalAdress, Step FROM Colis WHERE id = ?", id)
+	if err != nil {
+		panic(err)
+	}
+	defer rows.Close()
+	var colis Colis
+	for rows.Next() {
+		err := rows.Scan(&colis.Id, &colis.IdShop, &colis.StartAdress, &colis.FinalAdress, &colis.Step)
+		if err != nil {
+			panic(err)
+		}
+	}
+	colis.Id = id
 	return colis
 }

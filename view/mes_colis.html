@@ -6,42 +6,55 @@
     <title>Track-T'Heure</title>
     <link rel="stylesheet" href="../assets/css/mes_colis.css">
 </head>
-<body>
-    <header>
-        <a href="/"><img src="../assets/img/logo.png"></a>
-        <nav>
-            <ul>
-                <li><a href="/colis">mes colis</a></li>
-                <li><a href="retour">retour</a></li>
-                <li><a href="support">support</a></li>
-                <li><a href="/info">qui sommes nous ?</a></li>
-            </ul>
-        </nav>
+<body class="index-body">
+    <header class="index-header">
+        <a href="/">
+            <div class="container-logo">
+                <img src="./assets/img/logof.png" width="350" height="auto" />
+            </div>
+        </a>
+        <div class="header-buttons">
+            <a href="/mes_colis"> <!-- LIEN COLIS -->
+                <h1>Mes Colis</h1>
+            </a>
+            <a href="/retour"> <!-- LIEN RETOUR -->
+                <h1>Retour</h1>
+            </a>
+            <a href="/support"> <!-- LIEN SUPPORT -->
+                <h1>Support</h1>
+            </a>
+            <a href="/info"> <!-- LIEN QUI -->
+                <h1>Qui sommes-nous ?</h1>
+            </a>
+        </div>
     </header>
 
     <div class="colis_encours">
         <h1>Colis en cours :</h1>
         <div class="info">
             <h2>Contact :</h2>
-            <p>adresse de départ : {{.StartAdress}}</p>
-            <p>adresse mail :</p>
-            <p>n° de téléphone :</p>
-            <p>n° de commande :{{.Uid}}</p>
-            <p>destination :{{.FinalAdress}}</p>
-            <p>statut : {{.Step}}</p>
-            
+            <div class="infos">
+                <p><span style="color:orange;">adresse de départ :</span> Bordeaux</p>
+                <p><span style="color:orange;">adresse mail :</span> bordeaux@bordeaux.com</p>
+                <p><span style="color:orange;">n° de téléphone :</span> 01.23.45.67.89</p>
+                <p><span style="color:orange;">n° de commande :</span> LVLLBDX</p>
+                <p><span style="color:orange;">destination :</span> Bordeux</p>
+                <p><span style="color:orange;">statut :</span> En traitement</p>
+            </div>
         </div>
     </div>
     <div class="colis_livrés">
         <h1>Colis livrés :</h1>
         <div class="info">
             <h2>Contact :</h2>
-            <p>adresse :</p>
-            <p>adresse mail :</p>
-            <p>n° de téléphone :</p>
-            <p>n° de commande :</p>
-            <p>destination :</p>
-            <p>statut :</p>
+            <div class="infos">
+                <p><span style="color:orange;">adresse :</span> Bordeux</p>
+                <p><span style="color:orange;">adresse mail :</span> bordeaux@bordeaux.com</p>
+                <p><span style="color:orange;">n° de téléphone :</span> 01.23.45.67.89</p>
+                <p><span style="color:orange;">n° de commande :</span> LVLLBDX</p>
+                <p><span style="color:orange;">destination :</span> Bordeux</p>
+                <p><span style="color:orange;">statut :</span> Livré</p>
+            </div>
         </div>
     </div>
 </body>
