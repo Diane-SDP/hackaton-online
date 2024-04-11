@@ -36,13 +36,17 @@ func BOHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		ClientAdress := r.FormValue("ClientAdress")
 		StartAdress := r.FormValue("StartAdress")
+		ClientCity := r.FormValue("ClientCity")
+		StartCity := r.FormValue("StartCity")
+		StartPostalCode := r.FormValue("StartPostalCode")
+		ClientPostalCode := r.FormValue("ClientPostalCode")
 		plus := r.FormValue("p")
 		moins := r.FormValue("m")
 		println("--------")
 		println(plus)
 		println(moins)
 		println("--------")
-		if ClientAdress != "" && StartAdress != "" {
+		if ClientAdress != "" && StartAdress != "" && StartCity != "" && ClientCity != "" && StartPostalCode != "" && ClientPostalCode != "" {
 			const charset = "0123456789"
 			var seededRand *rand.Rand = rand.New(
 				rand.NewSource(time.Now().UnixNano()))
@@ -50,8 +54,8 @@ func BOHandler(w http.ResponseWriter, r *http.Request) {
 			for i := 0; i < 10; i++ {
 				code += string(charset[seededRand.Intn(len(charset))])
 			}
-			models.AddColis(code, 0, StartAdress, ClientAdress)
-		}else {
+			models.AddColis(code, 0, StartAdress, ClientAdress, StartCity+" "+StartPostalCode, ClientCity+" "+ClientPostalCode)
+		} else {
 			var data Data
 			if err := json.NewDecoder(r.Body).Decode(&data); err != nil {
 				http.Error(w, err.Error(), http.StatusBadRequest)

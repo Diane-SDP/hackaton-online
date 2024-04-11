@@ -2,6 +2,7 @@ package models
 
 import (
 	"database/sql"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -18,6 +19,8 @@ func CreateDB() {
 		IdShop INTEGER,
 		StartAdress TEXT,
 		FinalAdress TEXT,
+		StartCity TEXT,
+		ClientCity TEXT,
 		Step INTEGER
 	)
 	`)

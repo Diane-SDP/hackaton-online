@@ -10,6 +10,9 @@ func ColisHandler(w http.ResponseWriter, r *http.Request) {
 	code := r.FormValue("colis-id")
 	if models.Exist(code) {
 		datacolis := models.GetColis(code)
+		distance := models.GetDistanceFromStart(datacolis.StartCity, datacolis.ClientCity)
+		datacolis.Distance = distance
+
 		tmpl, err := template.ParseFiles("./view/mes_colis.html")
 		if err != nil {
 			panic(err)

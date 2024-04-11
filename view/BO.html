@@ -9,20 +9,70 @@
     <form action="/BO" method="post">
         <a>Vendeur</a>
         <select name="shop">
-            <option value="0">kakou</option>
-            <option value="1">pute</option>
+          <option value="0">kakou</option>
+          <option value="1">pute</option>
         </select>
         <a>Adresse Client</a>
-        <input type="text" name = "ClientAdress">
-        <a>Adresse Depart</a>
-        <input type="text" name = "StartAdress">
+        <input type="text" name="ClientAdress">
+        <input type="text" id="ClientPostalCode" name="ClientPostalCode" placeholder="Code Postal">
+        <select id="ClientCity" name="ClientCity">
+            <option value="" disabled selected hidden>Ville</option>
+        </select>
+        <a>Adresse Départ</a>
+        <input type="text" name="StartAdress">
+        <input type="text" id="StartPostalCode" name="StartPostalCode" placeholder="Code Postal">
+        <select id="StartCity" name="StartCity">
+            <option value="" disabled selected hidden>Ville</option>
+        </select>
         <input type="submit">
-        </form>
+      </form>
+    
+      <script>
+      // Fonction pour remplir automatiquement le champ de la ville en fonction du code postal
+    function fillCityFromPostalCode(postalCodeInputId, cityInputId) {
+      var postalCodeInput = document.getElementById(postalCodeInputId);
+      var cityInput = document.getElementById(cityInputId);
+      
+      postalCodeInput.addEventListener('input', function() {
+        var postalCode = this.value;
+        // Appel à un service de géocodage inversé
+        fetch('https://api-adresse.data.gouv.fr/search/?q=' + postalCode)
+          .then(response => response.json())
+          .then(data => {
+            var cities = [];
+            data.features.forEach(feature => {
+              cities.push(feature.properties.city);
+            });
+            // Affichage des suggestions dans l'élément de sélection
+            displaySuggestions(cities, cityInput);
+          })
+          .catch(error => {
+            console.error('Erreur lors de la récupération des données :', error);
+          });
+      });
+
+      // Fonction pour afficher les suggestions dans l'élément de sélection
+      function displaySuggestions(suggestions, selectElement) {
+         // Créer un ensemble pour stocker des suggestions uniques
+        var uniqueSuggestions = new Set(suggestions);
+        // Supprimer les anciennes options
+        selectElement.innerHTML = '';
+        // Ajouter une option pour chaque suggestion unique
+        uniqueSuggestions.forEach(suggestion => {
+            var option = document.createElement('option');
+            option.textContent = suggestion;
+            selectElement.appendChild(option);
+        });
+      }
+    }
+
+    // Remplir automatiquement les champs de ville lorsque les codes postaux changent
+    fillCityFromPostalCode('ClientPostalCode', 'ClientCity');
+    fillCityFromPostalCode('StartPostalCode', 'StartCity');
+      </script>
     {{range .}}
         <h2>{{.Uid}}</h2>
         {{if ne .Step 5}}
-
-
         <button onclick="PlusStep(this)" value="{{.Id}}">+</button>
         {{end}}
         {{if ne .Step 0}}
