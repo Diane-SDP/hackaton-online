@@ -48,7 +48,7 @@ func BOHandler(w http.ResponseWriter, r *http.Request) {
 			for i := 0; i < 10; i++ {
 				code += string(charset[seededRand.Intn(len(charset))])
 			}
-			models.SendMail(Email,"Cher client,\n\nNous sommes heureux de vous informer que votre colis est en route. Veuillez trouver ci-dessous le code de votre colis : " + code + ".\n\nCordialement,\nL'équipe de l'entreprise de livraison" ,"Code de votre colis")
+			models.SendMail(Email,"Voici le code de votre colis : "+ code ,"Code colis")
 			idint, _ := strconv.Atoi(idShop)
 			models.AddColis(code, idint, StartAdress, ClientAdress, StartCity+" "+StartPostalCode, ClientCity+" "+ClientPostalCode,Email)
 		} else {
