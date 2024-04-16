@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="../assets/css/addShop.css">
+    <link rel="stylesheet" href="../assets/css/loginShop.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+
+    <title>AddShop</title>
+</head>
+
+<body>
+    <header>
+    <nav class="navbar">
+        <a href="/" class="logo">
+            <img src="assets\img\logof.png" style="height: 40px; width: auto;"/>
+        </a>
+        <div class="nav-links">
+            <ul>
+                <li><a href="/BO">Livraisons</a></li>
+                <li><a href="/addShop">Boutique</a></li>
+                <li><a href="/support">Support</a></li>
+                <li><a href="/info">A propos</a></li>
+                <div class="dropdown">
+                    <button class="dropbtn">Connexion</button>
+                    <div class="dropdown-content">
+                      <a href="/login">Admin</a>
+                      <a href="/loginShop">Collaborateur</a>
+                    </div>
+                  </div>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <div class="text-retour">
+        <h1>Ajouter un site marchand collaborateur</h1>
+    </div>
+    
+    <div class="container2">
+    <form action="" method="post">
+        <input type="text" name="title" placeholder="Nom..." required>
+        <input type="email" name="mail" placeholder="Mail..." required>
+        <input type="text" name="street"  placeholder="Adresse" required>
+        <input type="text" name="city" placeholder="Ville" required>
+        <input type="text" name="state"  placeholder="Pays" required>
+        <!-- <select name="categorie" required>
+            <option value="consommation">Produits de grande consommation (aliments, épicerie, boissons…)</option>
+            <option value="habillement">Habillement (vêtements, chaussures, accessoires…)</option>
+            <option value="culturel">Produits culturels (CD, livres, DVD…)</option>
+            <option value="volumineux">Mobilier et gros électroménager</option>
+        </select> -->
+    </div> 
+    <div class="valid">
+        <input type="submit" class="button">
+    </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -3,37 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Track-T'Heure</title>
+    
+    <!-- CSS LINK -->
     <link rel="stylesheet" href="../assets/css/info.css">
+    <link rel="stylesheet" href="../assets/css/loginShop.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+
+    <title>Info</title>
 </head>
 <body class="index-body">
-    <header class="index-header">
-        <a href="/">
-            <div class="container-logo">
-                <img src="./assets/img/logof.png" width="350" height="auto" />
-            </div>
+    <nav class="navbar">
+        <a href="/" class="logo">
+            <img src="assets\img\logof.png" style="height: 40px; width: auto;"/>
         </a>
-        <div class="header-buttons">
-            <a href="/mes_colis"> <!-- LIEN COLIS -->
-                <h1>Mes Colis</h1>
-            </a>
-            <a href="/retour"> <!-- LIEN RETOUR -->
-                <h1>Retour</h1>
-            </a>
-            <a href="/support"> <!-- LIEN SUPPORT -->
-                <h1>Support</h1>
-            </a>
-            <a href="/info"> <!-- LIEN QUI -->
-                <h1>Qui sommes-nous ?</h1>
-            </a>
+        <div class="nav-links">
+            <ul>
+                <li><a href="/BO">Livraisons</a></li>
+                <li><a href="/addShop">Boutique</a></li>
+                <li><a href="/support">Support</a></li>
+                <li><a href="/info">A propos</a></li>
+                <div class="dropdown">
+                    <button class="dropbtn">Connexion</button>
+                    <div class="dropdown-content">
+                      <a href="/login">Admin</a>
+                      <a href="/loginShop">Collaborateur</a>
+                    </div>
+                  </div>
+            </ul>
         </div>
-    </header>
+    </nav>
 
     <div class="body-container">
         <div class="encadrement">
             <div class="info">
                 <h2>Qui sommes nous ? :</h2>
-                <p>Dans les ruelles animées d'une petite ville, Trackt-T'Heure émergeait comme une force discrète mais déterminée dans le monde de la livraison de colis. Fondée par Maxime, un ancien champion de boxe, l'entreprise était bien plus qu'un simple service de livraison. Chaque colis était une opportunité de transmettre de la passion, de la fiabilité et de l'engagement. Inspiré par un colis mystérieux contenant un gant de boxe doré et un message énigmatique, Maxime avait réalisé que leur véritable combat était de rendre chaque livraison mémorable. Ainsi, Trackt-T'Heure est devenue bien plus qu'une entreprise - elle était le symbole de la détermination, de la précision et de l'inspiration, où chaque livraison était traitée avec la même intensité que chaque combat sur le ring.
+                <p>Dans les ruelles animées d'une petite ville, Track-T'Heure émergeait comme une force discrète mais déterminée dans le monde de la livraison de colis. Fondée par Maxime, un ancien champion de boxe, l'entreprise était bien plus qu'un simple service de livraison. Chaque colis était une opportunité de transmettre de la passion, de la fiabilité et de l'engagement. Inspiré par un colis mystérieux contenant un gant de boxe doré et un message énigmatique, Maxime avait réalisé que leur véritable combat était de rendre chaque livraison mémorable. Ainsi, Track-T'Heure est devenue bien plus qu'une entreprise - elle était le symbole de la détermination, de la précision et de l'inspiration, où chaque livraison était traitée avec la même intensité que chaque combat sur le ring.
                 </p>            
             </div>
         </div>

@@ -1,0 +1,97 @@
+/* ------------- CSS INDEX ----------------- */
+
+:root {
+    --primary-color: #528265;
+    --font-color: #ebe5e5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'jersey', sans-serif;
+    margin-top: 105px; /*imp*/
+    padding-top: 100px; /*imp*/
+}
+
+/* ------------- NAVBAR ----------------- */
+
+.navbar {
+    top: 0;
+    position: fixed;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    background-color: #528265;
+    box-shadow: black 0px 0px 10px;
+}
+
+.navbar a {
+    color: white;
+    font-size: 20px;
+}
+
+.navbar .nav-links ul {
+    display: flex;
+}
+
+.navbar .nav-links ul li {
+    margin: 0 30px;
+    padding: 16px;
+}
+
+.navbar .nav-links ul li.active a {
+    color: #F9CB75;
+    font-weight: 600;
+}
+
+.container {
+    margin-top: 3%;
+}
+
+.container-login {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    background-color: rgb(248, 238, 219);
+    text-align: center;
+    border-radius: 20px;
+    padding: 0.5%;
+    margin-bottom: 2.6%;
+}
+
+.container-login h1 {
+    padding: 4%;
+}
+
+.container-login input {
+    margin: 1.5%;
+    border-radius: 5px;
+}
+
+.container-register {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    background-color: rgb(248, 238, 219);
+    text-align: center;
+    border-radius: 20px;
+    padding: 0.5%;
+    margin-bottom: 2.7%;
+}
+
+.container-register h1 {
+    padding: 4%;
+}
+
+.container-register input {
+    margin: 1.5%;
+    border-radius: 5px;
+}

@@ -1,82 +1,85 @@
-*{
-    margin: 0%;
-}
-
-a{
-    text-decoration: none;
-}
+/* ------------- CSS SUPPORT ----------------- */
 
 :root {
     --primary-color: #528265;
     --font-color: #ebe5e5;
 }
 
-a {
-    text-decoration: none;
-}
-
-/* ------------- CSS INDEX ----------------- */
-
-.index-body {
+* {
     margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
 }
 
-/* header */
-
-header {
-    background-color: #528265;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 50px;
+body {
+    font-family: 'Poppins', sans-serif;
 }
 
-header h1 {
-    color: white;
-    line-height: 52px;
-    vertical-align: middle;
-}
+/* ------------- NAVBAR ----------------- */
 
-.index-header {
+.navbar {
+    position: fixed;
+    top: 0%;
+    padding: 30px;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
     align-items: center;
-    height: 100px;
-    padding: 0 100px;
+    background-color: #528265;
+    box-shadow: black 0px 0px 10px;
 }
 
-.index-header .header-buttons {
+.navbar a {
+    color: white;
+    font-size: 20px;
+}
+
+.navbar .nav-links ul {
     display: flex;
+}
+
+.navbar .nav-links ul li {
+    margin: 0 30px;
+    padding: 16px;
+}
+
+.navbar .nav-links ul li.active a {
+    color: #F9CB75;
+    font-weight: 600;
+}
+
+/* ------------- BODY ----------------- */
+
+.body-container {
+    display: flex;
+    justify-content: center;
     align-items: center;
-}
-
-.index-header .header-buttons {
-    margin-right: 10px;
-}
-
-.index-header h1 {
-    display: flex;
-    color: #ffffff;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin: 0px 25px;
+    height: 80vh;
+    padding: 0px 100px;
+    font-family: Arial, sans-serif; 
 }
 
 .first{
-background-color: #528265;
-color: white;
-width:350px;
-height: 150px;
-margin:auto;
-margin-top: 7%;
-border-radius: 10px;
+    background-color: #528265;
+    color: white;
+    width:350px;
+    height: 265px;
+    margin:auto;
+    margin-top: 50vh;
+    border-radius: 10px;
 }
 
-.contact{
-    margin-left: 35%;
+.contact p{
+    margin-left: 6%;
 }
 
 .title{
-color: white;
-text-decoration: underline;
-margin-left: 2%;
+    color: white;
+    text-decoration: underline;
+    padding: 1%;
+    padding-bottom: 5%;
 }
 
 
@@ -90,11 +93,13 @@ margin-left: 2%;
     margin-left: 10%;
     border-radius: 10px;
     float:left;
-    }
+}
 
 .message_admin{
     text-decoration: underline;
     margin-left: 4%;
+    padding: 1%;
+    padding-bottom: 5%;
 }
 
 .third{
@@ -103,10 +108,10 @@ margin-left: 2%;
     width:360px;
     height: 265px;  
     margin:auto;
-    margin-top: 3.5%;
+    margin-top: 50vh;
     margin-right: 10%;
     border-radius: 10px;
-    }
+}
 
 
 .top_message{
@@ -117,4 +122,20 @@ margin-left: 2%;
 .question {
     text-decoration: none;
     margin-left: 4%;
+    margin-right: 4%;
+}
+
+.question p {
+    width: 100%;
+    padding-left: 1%;
+}
+
+h2 {
+    padding: 1%;
+}
+
+.question a {
+    color: black;
+    font-weight: bold;
+    padding-left: 1px;
 }

@@ -14,7 +14,17 @@ func SupportHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 	}
-	err = tmpl.Execute(w, nil)
+	connected := false
+	_, err = r.Cookie("admin")
+	if err != nil {
+		_, err = r.Cookie("shop")
+		if err == nil {
+			connected = true
+		}
+	} else {
+		connected = true
+	}
+	err = tmpl.Execute(w, connected)
 	if err != nil {
 		panic(err)
 	}

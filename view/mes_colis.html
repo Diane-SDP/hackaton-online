@@ -3,60 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Track-T'Heure</title>
+    
+    <!-- CSS LINK -->
     <link rel="stylesheet" href="../assets/css/mes_colis.css">
-</head>
-<body class="index-body">
-    <header class="index-header">
-        <a href="/">
-            <div class="container-logo">
-                <img src="./assets/img/logof.png" width="350" height="auto" />
-            </div>
-        </a>
-        <div class="header-buttons">
-            <a href="/mes_colis"> <!-- LIEN COLIS -->
-                <h1>Mes Colis</h1>
-            </a>
-            <a href="/retour"> <!-- LIEN RETOUR -->
-                <h1>Retour</h1>
-            </a>
-            <a href="/support"> <!-- LIEN SUPPORT -->
-                <h1>Support</h1>
-            </a>
-            <a href="/info"> <!-- LIEN QUI -->
-                <h1>Qui sommes-nous ?</h1>
-            </a>
-        </div>
-    </header>
+    <link rel="stylesheet" href="../assets/css/loginShop.css">
+    <!-- <link rel="stylesheet" href="../assets/css/header.css"> -->
+    <link rel="stylesheet" href="../assets/css/progressBar.css">
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
 
-    <div class="colis_encours">
-        <h1>Colis en cours :</h1>
-        <div class="info">
-            <h2>Contact :</h2>
+    <title>Suivi de colis</title>
+</head>
+<body>
+    <input type="hidden" id="step" value="{{.Colis.Step}}">
+    <nav class="navbar">
+        <a href="/" class="logo">
+            <img src="assets\img\logof.png" style="height: 40px; width: auto;"/>
+        </a>
+        <div class="nav-links">
+            <ul>
+                <li><a href="/BO">Livraisons</a></li>
+                <li><a href="/addShop">Boutique</a></li>
+                <li><a href="/support">Support</a></li>
+                <li><a href="/info">A propos</a></li>
+                <div class="dropdown">
+                    <button class="dropbtn">Connexion</button>
+                    <div class="dropdown-content">
+                      <a href="/login">Admin</a>
+                      <a href="/loginShop">Collaborateur</a>
+                    </div>
+                  </div>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="colis">
+        <div class="container" style="display: none;" id="step0">
+            <div class="nom">
+                <a class="step1">préparation</a>
+                <!-- <a class="step2">acheminement</a> -->
+                <a class="step3">livraison</a>
+                <a class="step4">livré</a>
+            </div>
+            <div class="progress-steps-container">
+                <div class="step-progression" id="stepProgression"></div>
+                <div class="step-number-1"><img src="../assets/img/package-regular-24.png"></div>
+                <!-- <div class="step-number-2"><img src="factory-solid-24_1.png"></div> -->
+                <div class="step-number-3"><img src="../assets/img/25844_1_1.png"></div>
+                <div class="step-number-4"><img src="../assets/img/home-regular-24.png"></div>
+            </div>
+
+            <!-- <div class="row">
+                <button id="prevBtn" class="btn btn-primary">prev</button>
+                <button id="nextBtn" class="btn btn-primary">next</button>
+            </div> -->
+        </div>
+    
+        <div class="container2" style="display: none;" id="step1">
+            <div class="nom2">
+                <a class="step1-2">préparation</a>
+                <!-- <a class="step2-2">acheminement</a> -->
+                <a class="step3-2">livraison</a>
+                <a class="step4-2">livré</a>
+            </div>
+            <div class="progress-steps-container2">
+                <div class="step-progression2" id="stepProgression"></div>
+                <div class="step-number2-1"><img src="../assets/img/package-regular-24.png"></div>
+                <!-- <div class="step-number2-2"><img src="factory-solid-24_1.png"></div> -->
+                <div class="step-number2-3"><img src="../assets/img/25844_1_1.png"></div>
+                <div class="step-number2-4"><img src="../assets/img/home-regular-24.png"></div>
+            </div>
+
+            <!-- <div class="row2">
+                <button id="prevBtn" class="btn btn-primary">prev</button>
+                <button id="nextBtn" class="btn btn-primary">next</button>
+            </div> -->
+        </div>
+    
+        <div class="container3" style="display: none;" id="step2">
+            <div class="nom3">
+                <a class="step1-3">préparation</a>
+                <!-- <a class="step2-3">acheminement</a> -->
+                <a class="step3-3">livraison</a>
+                <a class="step4-3">livré</a>
+            </div>
+            <div class="progress-steps-container3">
+                <div class="step-progression3" id="stepProgression"></div>
+                <div class="step-number3-1"><img src="../assets/img/package-regular-24.png"></div>
+                <!-- <div class="step-number3-2"><img src="factory-solid-24_1.png"></div> -->
+                <div class="step-number3-3"><img src="../assets/img/25844_1_1.png"></div>
+                <div class="step-number3-4"><img src="../assets/img/home-regular-24.png"></div>
+            </div>
+
+            <!-- <div class="row3">
+                <button id="prevBtn" class="btn btn-primary">prev</button>
+                <button id="nextBtn" class="btn btn-primary">next</button>
+            </div> -->
+        </div>
+        <div class="expediteur">
+            <h2>Expéditeur : {{.Colis.Shop.Name}}</h2>
             <div class="infos">
-                <p>{{.Distance}}</p>
-                <p><span style="color:orange;">adresse de départ :</span> Bordeaux</p>
-                <p><span style="color:orange;">adresse mail :</span> bordeaux@bordeaux.com</p>
-                <p><span style="color:orange;">n° de téléphone :</span> 01.23.45.67.89</p>
-                <p><span style="color:orange;">n° de commande :</span> LVLLBDX</p>
-                <p><span style="color:orange;">destination :</span> Bordeux</p>
-                <p><span style="color:orange;">statut :</span> En traitement</p>
+                <p><span style="color:#F9CB75;">adresse de départ :</span>{{.Colis.StartAdress}}, {{.Colis.StartCity}}</p>
+                <p><span style="color:#F9CB75;">adresse mail :</span> {{.Colis.Shop.Mail}}</p>
+                <p><span style="color:#F9CB75;">Numéro de Téléphone :</span> 06 10 72 21 52</p>
+                <p><span style="color:#F9CB75;">n° de commande :</span> {{.Colis.Uid}}</p>
             </div>
         </div>
-    </div>
-    <div class="colis_livrés">
-        <h1>Colis livrés :</h1>
-        <div class="info">
-            <h2>Contact :</h2>
+    
+        <div class="destination">
+            <h2>Destination :</h2>
             <div class="infos">
-                <p><span style="color:orange;">adresse :</span> Bordeux</p>
-                <p><span style="color:orange;">adresse mail :</span> bordeaux@bordeaux.com</p>
-                <p><span style="color:orange;">n° de téléphone :</span> 01.23.45.67.89</p>
-                <p><span style="color:orange;">n° de commande :</span> LVLLBDX</p>
-                <p><span style="color:orange;">destination :</span> Bordeux</p>
-                <p><span style="color:orange;">statut :</span> Livré</p>
+                <p><span style="color:#F9CB75;">adresse :</span>{{.Colis.FinalAdress}}, {{.Colis.ClientCity}}</p>
+                <p><span style="color:#F9CB75;">adresse mail :</span> exemple.de@mail.com</p>
+                <p><span style="color:#F9CB75;">Numéro de Téléphone :</span> 06 10 72 21 52</p>
+                <p><span style="color:#F9CB75;">Distance de trajet : </span>{{.Colis.Distance}} km</p>
             </div>
         </div>
+        
+        <div class="barre">
+            <div class="labarre">
+                <div class="jauge" style="background-color: #528265;"></div>
+                <div class="sep"></div>
+                <div class="jauge" style="background-color: #F9CB75;"></div>
+                <div class="sep"></div>
+                <div class="jauge" style="background-color: #ff6961;"></div>
+                <div class="rectangle-noir" style="width: {{.Colis.Position}}%;"></div>
+            </div>
+        </div>
+        <br>
     </div>
+
+
+
+    <!-- <div class="container4">
+        <div class="progress-steps-container4">
+            <div class="step-progression4" id="stepProgression"></div>
+            <div class="step-number"><img src="package-regular-24.png"></div>
+            <div class="step-number"><img src="factory-solid-24_1.png"></div>
+            <div class="step-number"><img src="25844_1_1.png"></div>
+            <div class="step-number"><img src="home-regular-24.png"></div>
+        </div>
+        <div class="nom4">
+            <a class="step1-4">préparation</a>
+            <a class="step2-4">acheminement</a>
+            <a class="step3-4">livraison</a>
+            <a class="step4-4">livré</a>
+        </div>
+        <div class="row4">
+            <button id="prevBtn" class="btn btn-primary">prev</button>
+            <button id="nextBtn" class="btn btn-primary">next</button>
+        </div>
+    </div> -->
+
 </body>
+<script src="../assets/js/progress_bar.js"></script>
 </html>

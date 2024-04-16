@@ -2,34 +2,31 @@
 <html lang="fr">
 
 <head>
-<link rel="stylesheet" href="../assets/css/retour.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<title>Retour</title>
-<link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="../assets/css/retour.css">
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+
+    <title>Retour</title>
 </head>
 
 <body>
-    <header class="index-header">
-        <a href="/">
-            <div class="container-logo">
-                <img src="./assets/img/logof.png" width="350" height="auto" />
-            </div>
+    <nav class="navbar">
+        <a href="/" class="logo">
+            <img src="assets\img\logof.png" style="height: 40px; width: auto;"/>
         </a>
-        <div class="header-buttons">
-            <a href="/mes_colis"> <!-- LIEN COLIS -->
-                <h1>Mes Colis</h1>
-            </a>
-            <a href="/retour"> <!-- LIEN RETOUR -->
-                <h1>Retour</h1>
-            </a>
-            <a href="/support"> <!-- LIEN SUPPORT -->
-                <h1>Support</h1>
-            </a>
-            <a href="/info"> <!-- LIEN QUI -->
-                <h1>Qui sommes-nous ?</h1>
-            </a>
+        <div class="nav-links">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="/retour">Retour</a></li>
+                <li><a href="/support">Support</a></li>
+                <li><a href="/info">About Us</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
     <div class="text-retour">
         <h1>Envoi ou retour d’un colis depuis votre boîte aux lettres</h1>

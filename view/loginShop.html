@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/header.css">
+    <title>Login</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/login.css">
     <link rel="stylesheet" href="../assets/css/loginShop.css">
-
+    <link rel="stylesheet" href="../assets/css/header.css">
     <title>Track-T'Heure</title>
 </head>
 <body>
@@ -16,10 +23,6 @@
         </a>
         <div class="nav-links">
             <ul>
-                <li><a href="/BO">Livraisons</a></li>
-                <li><a href="/addShop">Boutique</a></li>
-                <li><a href="/support">Support</a></li>
-                <li><a href="/info">A propos</a></li>
                 <div class="dropdown">
                     <button class="dropbtn">Connexion</button>
                     <div class="dropdown-content">
@@ -27,6 +30,9 @@
                       <a href="/loginShop">Collaborateur</a>
                     </div>
                   </div>
+                {{if .}}<li><a href="/addShop">Boutique</a></li>{{end}}
+                <li><a href="/support">Support</a></li>
+                <li><a href="/info">A propos</a></li>
             </ul>
         </div>
     </nav>
@@ -35,8 +41,8 @@
         <div class="container-login">
             <h1>Se connecter</h1>
             <form action=""method="post">
-                <h2>Pseudo</h2>
-                <input type="text" name="pseudo">
+                <h2>Mail</h2>
+                <input type="text" name="mail">
                 <h2>Mot de passe</h2>
                 <input type="password" name="mdp"><br>
                 <input type="submit">
@@ -69,6 +75,16 @@
         <input type="text" name="pseudoR">
         <h2>mdp</h2>
         <input type="text" name="mdpR">
+        <input type="submit">
+    </form> -->
+</body>
+</html>
+    <!-- <h1>Login</h1>
+    <form action="" method="post">
+        <h2>Mail</h2>
+        <input type="text" name="mail" required>
+        <h2>Mot de passe</h2>
+        <input type="text" name="mdp" required>
         <input type="submit">
     </form> -->
 </body>

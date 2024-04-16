@@ -1,6 +1,8 @@
 package models
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"math/rand"
 	"time"
 )
@@ -15,7 +17,7 @@ type User struct {
 }
 
 func GetUserByUid(uid string) User {
-	rows, err := DB.Query("SELECT id, passwd, uid, name, admin FROM Users WHERE uid = ?", uid)
+	rows, err := DB.Query("SELECT id, passwd, uid, name, admin FROM users WHERE uid = ?", uid)
 	if err != nil {
 		panic(err)
 	}
@@ -39,7 +41,7 @@ func GetUserByUid(uid string) User {
 	return user
 
 }
-func AddUser(pseudo string, psswd string) {
+func AddUser(pseudo string, psswd string,email string) {
 	const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	var seededRand *rand.Rand = rand.New(
 		rand.NewSource(time.Now().UnixNano()))
@@ -47,19 +49,19 @@ func AddUser(pseudo string, psswd string) {
 	for i := 0; i < 16; i++ {
 		uid += string(charset[seededRand.Intn(len(charset))])
 	}
-	stmt, err := DB.Prepare("INSERT INTO Users(uid, name, passwd,admin ) VALUES(?, ?, ?, ?)")
+	stmt, err := DB.Prepare("INSERT INTO users(uid, name, passwd,Mail,admin ) VALUES(?,?, ?, ?, ?)")
 	if err != nil {
 		panic(err)
 	}
 	defer stmt.Close()
-	_, err = stmt.Exec(uid, pseudo, psswd, 1)
+	_, err = stmt.Exec(uid, pseudo, psswd,email, 1)
 	if err != nil {
 		panic(err)
 	}
 }
 
 func ExistAccount(Pseudo string) (bool, string, string) {
-	rows, err := DB.Query("SELECT name , passwd, uid FROM Users")
+	rows, err := DB.Query("SELECT name , passwd, uid FROM users")
 	if err != nil {
 		panic(err)
 	}
@@ -75,8 +77,9 @@ func ExistAccount(Pseudo string) (bool, string, string) {
 	}
 	return false, "", "oui"
 }
+
 func Getuid(Pseudo string) string {
-	rows, err := DB.Query("SELECT uid FROM Users WHERE name = ?", Pseudo)
+	rows, err := DB.Query("SELECT uid FROM users WHERE name = ?", Pseudo)
 	if err != nil {
 		panic(err)
 	}
@@ -89,4 +92,40 @@ func Getuid(Pseudo string) string {
 		}
 	}
 	return uid
+}
+
+func CreateDefaultAdmin(){
+	const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	var seededRand *rand.Rand = rand.New(
+		rand.NewSource(time.Now().UnixNano()))
+	var uid string
+	for i := 0; i < 16; i++ {
+		uid += string(charset[seededRand.Intn(len(charset))])
+	}
+	mdp := sha256.Sum256([]byte("admin"))
+	mdphash :=  hex.EncodeToString((mdp[:]))
+	stmt, err := DB.Prepare("INSERT INTO users(uid, name, passwd,admin ) VALUES(?, ?, ?, ?)")
+	if err != nil {
+		panic(err)
+	}
+	defer stmt.Close()
+	_, err = stmt.Exec(uid, "admin", mdphash, 1)
+	if err != nil {
+		panic(err)
+	}
+}
+func DeleteDefaultAdmin(){
+	_,err := DB.Exec("Delete from users where name = ?","admin")
+	if err != nil {
+		panic(err)
+	}
+}
+
+func ExistAdmin()bool{
+    var count int
+    err := DB.QueryRow("SELECT COUNT(id) from users").Scan(&count)
+    if err != nil {
+        panic(err)
+    }
+    return count > 0
 }

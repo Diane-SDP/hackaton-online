@@ -2,65 +2,75 @@
 <html lang="fr">
 
 <head>
-<link rel="stylesheet" href="../assets/css/support.css">
-<title>Support</title>
-<link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="../assets/css/support.css">
+    <link rel="stylesheet" href="../assets/css/loginShop.css">
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    
+    <title>Support</title>
 </head>
 
 <body>
-    <header class="index-header">
-        <a href="/">
-            <div class="container-logo">
-                <img src="./assets/img/logof.png" width="350" height="auto" />
-            </div>
+    <nav class="navbar">
+        <a href="/" class="logo">
+            <img src="assets\img\logof.png" style="height: 40px; width: auto;"/>
         </a>
-        <div class="header-buttons">
-            <a href="/mes_colis"> <!-- LIEN COLIS -->
-                <h1>Mes Colis</h1>
-            </a>
-            <a href="/retour"> <!-- LIEN RETOUR -->
-                <h1>Retour</h1>
-            </a>
-            <a href="/support"> <!-- LIEN SUPPORT -->
-                <h1>Support</h1>
-            </a>
-            <a href="/info"> <!-- LIEN QUI -->
-                <h1>Qui sommes-nous ?</h1>
-            </a>
+        <div class="nav-links">
+            <ul>
+                <li><a href="/BO">Livraisons</a></li>
+                <li><a href="/addShop">Boutique</a></li>
+                <li><a href="/support">Support</a></li>
+                <li><a href="/info">A propos</a></li>
+                <div class="dropdown">
+                    <button class="dropbtn">Connexion</button>
+                    <div class="dropdown-content">
+                      <a href="/login">Admin</a>
+                      <a href="/loginShop">Collaborateur</a>
+                    </div>
+                  </div>
+            </ul>
         </div>
-    </header>
+    </nav>
 
-    <div class="first">
-        <div class="title">
-        <h2>contact :</h2>
-    </div>
-        <div class="contact">
-        
-        <p>Adresse : 3 ter place des marronniers</p>
-        <br>
-        <p>adresse mail : makhavat@sfr.fr</p>
-        <br>
-        <p>n° de tel : 06 34 23 47 09</p>
+    <div class="body-container">
+        <div class="first">          
+            <div class="contact">
+                <div class="title">
+                    <h2 class="top_message">Nous contacter :</h2>
+                </div>
+                <p>Adresse :</p>
+                <br>
+                <p>adresse mail : </p>
+                <br>
+                <p>n° de tel :</p>
+            </div>
+        </div>
+
+        <!-- <div class="second">
+                <div class="message_admin">
+                    <h2>Message a l'admin :</h2>
+                </div>
+        </div> -->
+
+        <div class="third">
+            <div>
+                <h2 class="top_message">Question fréquente :</h2>
+                <div class="question">
+                    <br>
+                    <p>Est ce que les trajets sont poluants ?</p>
+                    <hr /><br>
+                    <p>La pollution des trajets dépendent de la distance et du moyen de transport. Si l'impact environnemental est faible, alors il y aura une réduction sur la commande.</p>
+                    <br>
+                    <p>Où puis-je suivre ma commande ?</p>
+                    <hr /><br>
+                    <p>Pour suivre votre commande, veuillez vous rendre <a href="/">ici.</a></p>
+                </div>
+            </div>
         </div>
     </div>
-
-<div class="second">
-<div class="message_admin">
-    <h2>Message a l'admin :</h2>
-</div>
-</div>
-
-<div class="third">
-<div>
-<h2 class="top_message">Question fréquente :</h2>
-<div class="question">
-<br>
-<p> comment faire un retour sur ma commande ?</p>
-<br>
-<p> Quels sont les délais de livraison ?</p>
-</div>
-</div>
-</div>
-
 </body>
 </html>

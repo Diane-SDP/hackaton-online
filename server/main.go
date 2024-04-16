@@ -18,6 +18,9 @@ func main() {
 
 	fmt.Println("Connected to the MySQL database")
 	models.CreateDB()
+	if !models.ExistAdmin() {
+		models.CreateDefaultAdmin()
+	}
 	fs := http.FileServer(http.Dir("assets"))
 	http.Handle("/assets/", http.StripPrefix("/assets", fs))
 
@@ -26,10 +29,12 @@ func main() {
 	http.HandleFunc("/support", controller.SupportHandler)
 	http.HandleFunc("/BO", controller.BOHandler)
 	http.HandleFunc("/info", controller.InfoHandler)
-	http.HandleFunc("/mes_colis", controller.MesColisHandler)
+	http.HandleFunc("/mes_colis", controller.ColisHandler)
 	http.HandleFunc("/retour", controller.RetourHandler)
 	http.HandleFunc("/login", controller.LoginHandler)
-
+	http.HandleFunc("/CreateUser", controller.CreateUserHandler)
+	http.HandleFunc("/addShop", controller.AddShopHandler)
+	http.HandleFunc("/loginShop", controller.LoginShopHandler)
 	panic(http.ListenAndServe(":8080", nil))
 
 }

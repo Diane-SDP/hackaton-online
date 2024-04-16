@@ -1,141 +1,192 @@
-/* ---- GENERAL ---- */
+/* ------------- CSS MES COLIS ----------------- */
 
-*{
-    margin: 0;
+:root {
+    --primary-color: #528265;
+    --font-color: #ebe5e5;
 }
 
-a {
+* {
+    margin: 0;
+    padding: 0;
     text-decoration: none;
+    list-style: none;
 }
 
 body {
-    background-image: url(https://themewagon.github.io/courier/v1.0.0/assets/img/illustrations/hero.png);
-    background-repeat: no-repeat;
-    background-position: right bottom;
-}
-/* ---- HEADER ---- */
-
-header {
-    background-color: #528265;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 50px;
+    font-family: 'Poppins', sans-serif;
 }
 
-header h1 {
-    color: white;
-    line-height: 52px;
-    vertical-align: middle;
-}
+/* ------------- NAVBAR ----------------- */
 
-.container-logo{
+.navbar {
+    position: fixed;
+    top: 0%;
+    padding: 30px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-}
-
-.index-header {
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
     align-items: center;
-    height: 100px;
-    padding: 0 100px;
+    background-color: #528265;
+    box-shadow: black 0px 0px 10px;
 }
 
-.index-header .header-buttons {
+.navbar a {
+    color: white;
+    font-size: 20px;
+}
+
+.navbar .nav-links ul {
     display: flex;
-    align-items: center;
 }
 
-.index-header .header-buttons {
-    margin-right: 10px;
+.navbar .nav-links ul li {
+    margin: 0 30px;
+    padding: 16px;
 }
 
-.index-header h1 {
-    display: flex;
-    color: #ffffff;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin: 0px 25px;
+.navbar .nav-links ul li.active a {
+    color: #F9CB75;
+    font-weight: 600;
 }
 
-/* ---- BODY ---- */
+/* ------------- BODY ----------------- */
 
-.colis_encours {
-    margin-top: 3%;
+.colis {
+    margin-top: 8%;
     font-family: Arial, sans-serif;
 }
 
-.colis_encours h1 {
+.colis h1 {
     margin-left: 5%;
     text-decoration: underline;
 }
 
-.colis_encours .info {
+.colis .expediteur {
     background-color: #528265;
     align-items: left;
     width: 25%;
     height: auto;
     margin-top: 3%;
-    margin-left: 35%;
+    margin-left: 15%;
     padding: 1%;
     border: 2px solid rgba(0, 0, 0, 0.35);
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 50px;
     color: white;
+    float: left;
 }
 
-.colis_encours .info h2 {
+
+.colis .expediteur h2 {
     text-decoration: underline;
     padding-bottom: 10px;
+    padding-bottom: 5%;
 }
 
-.colis_encours .info p {
-    text-align: center;
+.colis .expediteur p {
+    text-align: left;
     padding: 0.5%;
+    width: 100%;
 }
 
-.infos {
+.expediteur {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
 }
 
-.colis_encours .infos-color {
+.colis .expediteur-color {
     color : blue;
 }
 
-.colis_livrés {
-    margin-top: 3%;
-    font-family: Arial, sans-serif;
+.destination {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
-.colis_livrés h1 {
-    margin-left: 5%;
-    text-decoration: underline;
-}
-
-.colis_livrés .info {
+.colis .destination {
     background-color: #528265;
     width: 25%;
     height: auto;
     margin-top: 3%;
-    margin-left: 35%;
+    margin-right: 15%;
     padding: 1%;
     border: 2px solid rgba(0, 0, 0, 0.35);
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 50px;
     color: white;
+    float: right;
 }
 
-.colis_livrés .info h2 {
+.colis .destination h2 {
     text-decoration: underline;
     padding-bottom: 10px;
+    padding-bottom: 5%;
 }
 
-.colis_livrés .info p {
-    text-align: center;
+.colis .destination p {
+    text-align: left;
     padding: 0.5%;
+    width: 100%;
 }
 
+.labarre{
+    display: flex;
+    border-radius: 10px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    overflow: hidden;
+    position: relative;
+    transform: translate(0,100px);
+}
+.jauge{
+    height: 40px;
+    width: 25vw;
+}
+.sep{
+    height: 40px;
+    width: 3px;
+    background-color: white;
+}
+
+.rectangle-noir {
+    position: absolute; /* Position absolue pour placer le rectangle */
+    top: 0;
+    left: 0;
+    height: 100%; /* Largeur pour couvrir 50% de la barre */
+    background-color: transparent; /* Couleur noire */
+    z-index: 1; /* Assure que le rectangle soit au-dessus des autres éléments */
+    border-right: 4px solid black;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #ddd;
+    position: relative;
+  }
+  
+  .progression {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.5s ease;
+  }
+  
+  .label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+  }
+  
 /* footer */
+

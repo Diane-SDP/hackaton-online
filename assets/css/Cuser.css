@@ -1,4 +1,5 @@
-/* ------------- CSS INFO ----------------- */
+/* ------------- Create User ----------------- */
+
 
 :root {
     --primary-color: #528265;
@@ -14,12 +15,18 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    background-image: url(https://themewagon.github.io/courier/v1.0.0/assets/img/illustrations/hero.png);
+    background-repeat: no-repeat;
+    background-position:12em 12em;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 /* ------------- NAVBAR ----------------- */
 
+
 .navbar {
     position: fixed;
+    top: 0%;
     padding: 30px;
     display: flex;
     justify-content: space-between;
@@ -41,7 +48,7 @@ body {
 
 .navbar .nav-links ul li {
     margin: 0 30px;
-    padding: 16px;
+    padding-top: 14px;
 }
 
 .navbar .nav-links ul li.active a {
@@ -51,32 +58,30 @@ body {
 
 /* ------------- BODY ----------------- */
 
-.body-container {
-    display: flex;
-    justify-content: center;
-    height: 90vh;
-    align-items: center;
-    font-family: Arial, sans-serif;
-}
-
-.encadrement .info {
-    background-color: white;
-    width: 800px;
-    height: auto;
+.user{
+    background-color: #528265;
+    color: white;
+    width:350px;
+    height: 160px;
+    margin:auto;
+    margin-top: 40vh;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 50px;
-    padding: 2%;
-    margin-top: 15%;
 }
 
-.encadrement .info h2 {
+.pseudo{
+    text-align: center;
+    padding-top: 5%;
+    margin-bottom: 13%;
+    
+}
+
+.mail{
+    margin-left: 4%;
     text-align: center;
 }
 
-.encadrement .info p {
-    padding-bottom: 3%;
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 5%;
-    font-size: 20px;
+.submit{
+    margin-left: 40%;
+    margin-top: 5%;
+    border-radius: 5px;
 }

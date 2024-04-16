@@ -21,7 +21,10 @@ func CreateDB() {
 		FinalAdress TEXT,
 		StartCity TEXT,
 		ClientCity TEXT,
-		Step INTEGER
+		Step INTEGER,
+		Distance INTEGER,
+		Position INTEGER,
+		Email TEXT
 	)
 	`)
 	if err != nil {
@@ -33,7 +36,22 @@ func CreateDB() {
 		Passwd TEXT,
 		Uid TEXT,
 		Name TEXT,
+		Mail TEXT,
 		Admin INTEGER
+	)
+	`)
+	if err != nil {
+		panic(err)
+	}
+	_, err = DB.Exec(`
+	CREATE TABLE IF NOT EXISTS Shops(
+		Id INTEGER PRIMARY KEY AUTO_INCREMENT,
+		Passwd TEXT,
+		Uid TEXT,
+		Name TEXT,
+		Mail TEXT,
+		Adress TEXT,
+		Categorie TEXT
 	)
 	`)
 	if err != nil {

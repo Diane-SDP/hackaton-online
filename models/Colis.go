@@ -12,13 +12,15 @@ import (
 type Colis struct {
 	Id          int
 	Uid         string
-	IdShop      int
+	Shop        Shop
 	StartAdress string
 	FinalAdress string
 	StartCity   string
 	ClientCity  string
 	Step        int
-	Distance    float64
+	Distance    int
+	Position    int
+	Mail string
 }
 
 type Location struct {
@@ -30,13 +32,25 @@ type LocationSTR struct {
 	LonSTR string `json:"lon"`
 }
 
-func AddColis(code string, idshop int, startaddr string, finaladdr string, startCity string, clientCity string) {
-	stmt, err := DB.Prepare("INSERT INTO Colis(Uid, IdShop, StartAdress, FinalAdress, StartCity, ClientCity, Step) VALUES(?, ?, ?, ?, ?,?,?)")
+func AddColis(code string, idshop int, startaddr string, finaladdr string, startCity string, clientCity string,Email string) {
+	stmt, err := DB.Prepare("INSERT INTO Colis(Uid, IdShop, StartAdress, FinalAdress, StartCity, ClientCity, Step,Distance,Position,Email) VALUES(?, ?, ?, ?, ?,?,?,?,?,?)")
 	if err != nil {
 		panic(err)
 	}
 	defer stmt.Close()
-	_, err = stmt.Exec(code, idshop, startaddr, finaladdr, startCity, clientCity, 0)
+	distance := GetDistanceFromStart(startCity, clientCity)
+	Distance := int(distance)
+	var position int
+	if distance <= 100 {
+		position = int(distance / 3)
+	} else if distance <= 500 {
+		position = int(distance*0.08 + 25.21)
+	} else if distance <= 1000 {
+		position = int(distance*0.068 + 31)
+	} else {
+		position = 99
+	}
+	_, err = stmt.Exec(code, idshop, startaddr, finaladdr, startCity, clientCity, 0, Distance, position,Email)
 	if err != nil {
 		panic(err)
 	}
@@ -66,9 +80,7 @@ func GetDistanceFromStart(start string, destination string) float64 {
 }
 
 func getLocationCoordinates(address string) Location {
-	println("tarpin grosse PUTE MELISSANDRE")
 	url := fmt.Sprintf("https://nominatim.openstreetmap.org/search?format=json&q=%s", url.QueryEscape(address))
-	println(url)
 	resp, err := http.Get(url)
 	if err != nil {
 		panic(err)
@@ -91,7 +103,6 @@ func getLocationCoordinates(address string) Location {
 	}
 
 	if len(locations) == 0 {
-		println("rien de trouvé")
 		return Location{}
 	}
 
@@ -122,11 +133,42 @@ func GetAllColis() []Colis {
 		TheColis.StartAdress = StartAdress
 		TheColis.FinalAdress = FinalAdress
 		TheColis.Step = step
-		TheColis.IdShop = IdEntreprise
+		TheColis.Shop = GetShop(IdEntreprise)
 		AllColis = append(AllColis, TheColis)
 	}
 	return AllColis
 }
+
+func GetColisOf(idshop int) []Colis {
+	rows, err := DB.Query("SELECT id, uid, StartAdress, FinalAdress, StartCity, ClientCity, step, idShop FROM Colis WHERE idShop = ?", idshop)
+	if err != nil {
+		panic(err)
+	}
+	defer rows.Close()
+	var AllColis []Colis
+	for rows.Next() {
+		var id int
+		var uid string
+		var StartAdress string
+		var FinalAdress string
+		var step int
+		var IdEntreprise int
+		var TheColis Colis
+		err = rows.Scan(&id, &uid, &StartAdress, &FinalAdress, &TheColis.StartCity, &TheColis.ClientCity, &step, &IdEntreprise)
+		if err != nil {
+			panic(err)
+		}
+		TheColis.Id = id
+		TheColis.Uid = uid
+		TheColis.StartAdress = StartAdress
+		TheColis.FinalAdress = FinalAdress
+		TheColis.Step = step
+		TheColis.Shop = GetShop(IdEntreprise)
+		AllColis = append(AllColis, TheColis)
+	}
+	return AllColis
+}
+
 func Exist(code string) bool {
 	rows, err := DB.Query("SELECT Uid FROM Colis WHERE Uid = ?", code)
 	if err != nil {
@@ -146,35 +188,53 @@ func Exist(code string) bool {
 }
 
 func GetColis(code string) Colis {
-	rows, err := DB.Query("SELECT Id, IdShop, StartAdress, FinalAdress, StartCity, ClientCity, Step FROM Colis WHERE Uid = ?", code)
+	rows, err := DB.Query("SELECT Id, IdShop, StartAdress, FinalAdress, StartCity, ClientCity, Step ,Distance,Position FROM Colis WHERE Uid = ?", code)
 	if err != nil {
 		panic(err)
 	}
 	defer rows.Close()
 	var colis Colis
+	var idShop int
 	for rows.Next() {
-		err := rows.Scan(&colis.Id, &colis.IdShop, &colis.StartAdress, &colis.FinalAdress, &colis.StartCity, &colis.ClientCity, &colis.Step)
+		err := rows.Scan(&colis.Id, &idShop, &colis.StartAdress, &colis.FinalAdress, &colis.StartCity, &colis.ClientCity, &colis.Step, &colis.Distance, &colis.Position)
 		if err != nil {
 			panic(err)
 		}
 	}
+	// distance := GetDistanceFromStart(colis.StartCity, colis.ClientCity)
+	// colis.Distance = int(distance)
+	// var position int
+	// if distance <= 100 {
+	// 	position = int(distance / 3)
+	// } else if distance <= 500 {
+	// 	position = int(distance*0.08 + 25.21)
+	// } else if distance <= 1000 {
+	// 	position = int(distance*0.068 + 31)
+	// } else {
+	// 	position = 99
+	// }
+	// println(position)
+	println("truc",colis.Distance, colis.Position)
+	colis.Shop = GetShop(idShop)
 	colis.Uid = code
 	return colis
 }
 
 func GetColisbyid(id int) Colis {
-	rows, err := DB.Query("SELECT Id, IdShop, StartAdress, FinalAdress, StartCity, ClientCity, Step FROM Colis WHERE id = ?", id)
+	rows, err := DB.Query("SELECT Id,Uid, IdShop, StartAdress, FinalAdress, StartCity, ClientCity, Step,Distance,Position,Email FROM Colis WHERE id = ?", id)
 	if err != nil {
 		panic(err)
 	}
 	defer rows.Close()
 	var colis Colis
+	var IdEntreprise int
 	for rows.Next() {
-		err := rows.Scan(&colis.Id, &colis.IdShop, &colis.StartAdress, &colis.FinalAdress, &colis.StartCity, &colis.ClientCity, &colis.Step)
+		err := rows.Scan(&colis.Id, &colis.Uid,&IdEntreprise, &colis.StartAdress, &colis.FinalAdress, &colis.StartCity, &colis.ClientCity, &colis.Step,&colis.Distance,&colis.Position,&colis.Mail)
 		if err != nil {
 			panic(err)
 		}
 	}
+	colis.Shop = GetShop(IdEntreprise)
 	colis.Id = id
 	return colis
 }

@@ -1,0 +1,107 @@
+/* ------------- CSS INDEX ----------------- */
+
+:root {
+    --primary-color: #528265;
+    --font-color: #ebe5e5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 105px; /*imp*/
+    padding-top: 120px; /*imp*/
+}
+
+/* ------------- NAVBAR ----------------- */
+
+header {
+    margin-top: -50px;
+}
+
+.navbar {
+    top: 0; /*imp*/
+    position: fixed;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    background-color: #528265;
+    box-shadow: black 0px 0px 10px;
+}
+
+.navbar a {
+    color: white;
+    font-size: 20px;
+}
+
+.navbar .nav-links ul {
+    display: flex;
+}
+
+.navbar .nav-links ul li {
+    margin: 0 30px;
+    padding-top: 16px;
+}
+
+.navbar .nav-links ul li.active a {
+    color: #F9CB75;
+    font-weight: 600;
+}
+
+
+/* body */
+
+.text-retour {
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 1%;
+    padding: 2%;
+}
+
+.container {
+    background-color: rgb(248, 238, 219);
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 20px
+}
+
+.container2 {
+    text-align: center;
+    padding: 2%;
+}
+
+.button {
+    background-color: #528265;
+    color: white;
+    border-radius: 40px;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    font-size: 18px;
+    text-align: center;
+    display: inline-block;
+    border-width: 2px;
+    margin-bottom: 2%;
+}
+
+form input {
+    padding: 3px;
+}
+
+form select {
+    padding: 3px;
+}
+
+.valid {
+    text-align: center;
+}

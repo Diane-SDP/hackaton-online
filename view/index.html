@@ -3,44 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS LINK -->
     <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/loginShop.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+
+    <!-- ICONS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
     <title>Track-T'Heure</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
 </head>
 <body>
-    <header class="index-header">
-        <a href="/">
-            <div class="container-logo">
-                <img src="./assets/img/logof.png" width="350" height="auto" />
-            </div>
+    <nav class="navbar">
+        <a href="/" class="logo">
+            <img src="assets\img\logof.png" style="height: 40px; width: auto;"/>
         </a>
-        <div class="header-buttons">
-            <a href="/mes_colis"> <!-- LIEN COLIS -->
-                <h1>Mes Colis</h1>
-            </a>
-            <a href="/retour"> <!-- LIEN RETOUR -->
-                <h1>Retour</h1>
-            </a>
-            <a href="/support"> <!-- LIEN SUPPORT -->
-                <h1>Support</h1>
-            </a>
-            <a href="/info"> <!-- LIEN QUI -->
-                <h1>Qui sommes-nous ?</h1>
-            </a>
+        <div class="nav-links">
+            <ul>
+                <li><a href="/BO">Livraisons</a></li>
+                <li><a href="/addShop">Boutique</a></li>
+                <li><a href="/support">Support</a></li>
+                <li><a href="/info">A propos</a></li>
+                <div class="dropdown">
+                    <button class="dropbtn">Connexion</button>
+                    <div class="dropdown-content">
+                      <a href="/login">Admin</a>
+                      <a href="/loginShop">Collaborateur</a>
+                    </div>
+                  </div>
+            </ul>
         </div>
-    </header>
-    <div class="body-container">
-        <div class="suivi-container">
-            <h1>Suivez votre colis</h1>
-            <form action="/colis" method="post">
-            <div class="input-box">
-                <input type="text" name="colis-id" placeholder="No. de colis" required>
+    </nav>
+
+    <div class="body-wo-header">
+        <div class="body-container">
+            <div class="suivi-container">
+                <h1>Suivez votre colis</h1>
+                <form action="/mes_colis" method="post">
+                <div class="input-box">
+                    <input type="text" name="colis-id" placeholder="No. de colis" required>
+                </div>
+                <button type="submit" class="btn"><i class="fas fa-arrow-right"></i></button>
+                </form>
+                <h1 style="font-size: 15px; margin-top: 20px;">Absent lors de la livraison ? Contactez le <a href="support">support.</a></h1>
             </div>
-            <button type="submit" class="btn"><i class="fas fa-arrow-right"></i></button>
-            </form>
-            <h1 style="font-size: 15px;">Absent lors de la livraison ? Contactez le <a href="support">support.</a></h1>
         </div>
     </div>
 </body>
